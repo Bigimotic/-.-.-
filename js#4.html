@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://blick.netlify.app/all.min.css">
+  <script src="https://blick.netlify.app/all-3.min.js"></script>
+</head>
+<body>
+  <header class="line">
+    <nav>
+      <div class="wrapper" flex="center">
+        <h3>Камінь-Ножиці-Папір</h3>
+      </div>
+    </nav>
+  </header>
+
+  <div class="wrapper" flex="col center">
+    <p text="up bold 18" class="mb-20">Вибери щось</p>
+    <div>
+      <button class="small fsz-24 mb-10" onclick="play(0)"> ✊ </button>
+      <button class="small fsz-24 mb-10" onclick="play(1)"> ✌ </button>
+      <button class="small fsz-24 mb-10" onclick="play(2)"> ✋ </button>
+    </div>
+  </div>
+
+
+  <script>
+    let items = ['камінь', 'ножиці', 'папір']
+
+    function play(e){
+      let player  = items[e]
+      let bot     = items[Math.floor(Math.random() * 3)]
+
+      function checkWinner(){
+        if(player === bot) return 0
+        else if(bot === "камінь"){
+          return player === "папір" ? 1 : 2
+        }
+        else if(bot == "папір"){
+          return player === "ножиці" ? 1 : 2
+        }
+        else if(bot == "ножиці"){
+          return player === "камінь" ? 1 : 2
+        }
+      }
+      let result = checkWinner()
+
+      if (result === 0)      alert('НІЧИЯ. БОТ ВИБРАВ ' + bot.toUpperCase() )
+      else if (result === 1) alert('ТИ ВИГРАВ. БОТ ВИБРАВ ' + bot.toUpperCase() )
+      else if (result === 2) alert('ТИ ПРОГРАВ. БОТ ВИБРАВ ' + bot.toUpperCase() )
+    }
+
+    
+  </script>
+</body>
+</html>
